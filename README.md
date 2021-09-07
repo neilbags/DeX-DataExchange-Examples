@@ -1,10 +1,34 @@
-# DeX-DataExchange-Examples
-Example code for communicating with DeX Web Services API.
+First you need a system account. This takes 10 working days. You'll receive part of it via email and will need to call the DeX Helpdesk to get the rest of it.
 
+https://dex.dss.gov.au/dex-user-access-request-form
 
- Suds ( https://fedorahosted.org/suds/ )  version: 0.8.5
+Install suds:
+``` pip3 install suds-community```
 
- Service ( DEXService ) tns="http://api.socialservices.gov.au/DataCollection/DEX"
+This code should get you a listing of endpoints. Make sure you get your credentials right because you are locked-out after 5 attempts.
+```python
+#!/usr/bin/python3
+from suds.client import Client
+from suds.wsse import *
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logging.getLogger('suds.client').setLevel(logging.DEBUG)
+
+url = 'https://api.dss.gov.au/datacollection/dex?wsdl'
+client = Client(url)
+security = Security()
+token = UsernameToken('YOUR-USERNAME', 'YOUR-PASSWORD')
+security.tokens.append(token)
+client.set_options(wsse=security)
+print(client)
+```
+
+Output:
+```
+Suds ( https://fedorahosted.org/suds/ )  version: 0.8.5
+
+Service ( DEXService ) tns="http://api.socialservices.gov.au/DataCollection/DEX"
    Prefixes (14)
       ns0 = "http://api.socialservices.gov.au/Common"
       ns1 = "http://api.socialservices.gov.au/DataCollection/Assessment"
@@ -175,5 +199,6 @@ Example code for communicating with DeX Web Services API.
             ns0:TransactionStatusCode
             ns7:UnstructuredAddress
             ns10:User
+```
 
-
+Stay tuned
