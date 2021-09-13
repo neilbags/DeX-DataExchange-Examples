@@ -48,5 +48,9 @@ Forcing soap:address location to HTTPS
 
 If you need to see the raw XML, set `raw_response=True` and look at `result.content`.
 
+Here's an example of sending string data with a request:
+```python
+result = client.service.GetReferenceData(ReferenceDataCode="Gender")
+```
 
 Stay tuned...
