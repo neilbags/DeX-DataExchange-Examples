@@ -5,7 +5,7 @@ https://dex.dss.gov.au/dex-user-access-request-form
 I was first trying to use suds, and was able to authenticate however I kept getting 400 errors and never figured out why.
 
 Install zeep:
-``` pip3 install pip3 install zeep```
+``` pip3 install zeep```
 
 This code should get you a listing of endpoints. Then print out some information about your user account and organisation:
 ```python
