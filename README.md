@@ -7,16 +7,17 @@ I was first trying to use suds, and was able to authenticate however I kept gett
 Install zeep:
 ``` pip3 install pip3 install zeep```
 
-This code should get you a listing of endpoints. Then print out some information about your organisation:
+This code should get you a listing of endpoints. Then print out some information about your user account and organisation:
 ```python
 #!/usr/bin/python3
-from zeep import Client
+from zeep import Client, Settings
 from zeep.wsse.username import UsernameToken
 
+settings = Settings(strict=False, raw_response=False, xml_huge_tree=True)
 client = Client('https://api.dss.gov.au/datacollection/dex?wsdl',
-                wsse=UsernameToken('<USERNAME>', '<PASSWORD>'))
+                wsse=UsernameToken('<USERNAME>', '<PASSWORD>'), settings=settings)
+result = client.service.GetUser()
 print(dir(client.service))
-result = client.service.GetOrganisation()
 print(result.body)
 ```
 
@@ -34,24 +35,14 @@ Forcing soap:address location to HTTPS
         'TransactionStatusCode': 'Success',
         'Messages': None
     },
-    'Organisation': {
-        'Name':
-
+    'User': {
+        'UserName': 
+        
 ...
 
 ```
 
-If you need to see the raw XML:
-```python
-#!/usr/bin/python3
-from zeep import Client
-from zeep.wsse.username import UsernameToken
+If you need to see the raw XML, set `raw_response=True` and look at `result.content`.
 
-client = Client('https://api.dss.gov.au/datacollection/dex?wsdl',
-                wsse=UsernameToken('<USERNAME>', '<PASSWORD>'))
-with client.settings(raw_response=True):
-    result = client.service.GetOrganisation()
-    print(result.content)
-```
 
 Stay tuned...
