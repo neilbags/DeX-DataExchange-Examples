@@ -53,7 +53,8 @@ Here's an example of sending string data with a request:
 result = client.service.GetReferenceData(ReferenceDataCode="Gender")
 ```
 
-Now, lets get some real data. This fetches a list of up to 10,000 Clients, sorted by ClientID. PageSize, PageIndex, IsAscending and SortColumn are mandatory:
+Now, lets get some real data. This fetches a list of up to 10,000 Clients, sorted by ClientID. 
+PageSize, PageIndex, IsAscending and SortColumn are mandatory.
 
 ```python
 criteria = {'PageSize': 10000, 'PageIndex': 1,
