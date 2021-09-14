@@ -54,6 +54,7 @@ result = client.service.GetReferenceData(ReferenceDataCode="Gender")
 ```
 
 Now, lets get some real data. This fetches a list of up to 10,000 Clients, sorted by ClientID. 
+
 PageSize, PageIndex, IsAscending and SortColumn are mandatory.
 
 ```python
