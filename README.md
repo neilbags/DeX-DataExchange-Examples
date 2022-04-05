@@ -78,7 +78,7 @@ for i in 1, 2:
     try:
         slk += given_name_alpha[i]
     except IndexError:
-        slk = +'2'
+        slk += '2'
 slk += time.strftime("%d%m%Y")
 slk = slk.upper()
 ```
