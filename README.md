@@ -79,6 +79,8 @@ for i in 1, 2:
         slk += given_name_alpha[i]
     except IndexError:
         slk += '2'
-slk += time.strftime("%d%m%Y")
+slk += person.BirthDate.strftime("%d%m%Y")
+gender_map = {'MALE': '1', 'FEMALE': '2', 'INTERSEX': '3', 'NOTSTATED': '9'}
+slk += gender_map[person.GenderCode.DexCode]
 slk = slk.upper()
 ```
