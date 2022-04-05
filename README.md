@@ -64,4 +64,21 @@ result = client.service.SearchClient(Criteria=criteria)
 print(result.body)
 ```
 
-Stay tuned...
+Here's some code to generate the SLK:
+```python
+slk = ''
+family_name_alpha = ''.join(c for c in person.FamilyName if c.isalpha())
+for i in 1, 2, 4:
+    try:
+        slk += family_name_alpha[i]
+    except IndexError:
+        slk += '2'
+given_name_alpha = ''.join(c for c in person.GivenName if c.isalpha())
+for i in 1, 2:
+    try:
+        slk += given_name_alpha[i]
+    except IndexError:
+        slk = +'2'
+slk += time.strftime("%d%m%Y")
+slk = slk.upper()
+```
